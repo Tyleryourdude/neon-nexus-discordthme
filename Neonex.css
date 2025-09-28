@@ -1,163 +1,130 @@
-/* Neon Void - A Total Reimagining of Discord UI */
+/* Example: Fixed Custom Theme for Vencord - Replace class names with your own */
 
-/* Import a futuristic font */
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
 
-/* Root variables for bold, contrasting colors */
 :root {
-  --background: #000000;
-  --primary: #ff0066; /* Neon pink */
-  --accent: #00ffff; /* Cyan */
-  --highlight: #ffff00; /* Bright yellow */
-  --text-color: #eeeeee;
-  --shadow-color: rgba(255, 0, 102, 0.7);
-  --border-color: #222;
-  --font-family: 'Exo 2', sans-serif;
+  --background: #000;
+  --primary: #ff0066;
+  --accent: #00ffff;
+  --highlight: #ffff00;
+  --text: #eee;
+  --border: #222;
   --trans: all 0.4s ease;
 }
 
-/* Entire layout container - completely different grid layout */
+/* Main app container */
 #app {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "sidebar main info"
-    "footer footer footer";
-  grid-template-rows: 80px 1fr 80px;
-  grid-template-columns: 220px 1fr 250px;
+  display: flex;
+  flex-direction: row;
   height: 100vh;
   width: 100vw;
-  background-color: var(--background);
-  font-family: var(--font-family);
+  font-family: 'Exo 2', sans-serif;
   overflow: hidden;
 }
 
-/* Header – with animated neon glow */
-.header-3hKkG {
-  grid-area: header;
-  background-color: transparent;
+/* Sidebar - change to your class */
+.your-sidebar-class {
+  width: 240px;
+  background-color: #111;
+  border-right: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Sidebar items */
+.your-sidebar-item {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+  transition: var(--trans);
+}
+.your-sidebar-item:hover {
+  background-color: #222;
+  box-shadow: 0 0 10px var(--primary);
+  transform: scale(1.05);
+}
+.your-sidebar-item.active {
+  background-color: #222;
+  box-shadow: 0 0 15px var(--accent);
+  font-weight: bold;
+}
+
+/* Header - replace with your class */
+.your-header-class {
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  border-bottom: 2px solid var(--border-color);
-  font-size: 24px;
-  color: var(--highlight);
-  text-shadow: 0 0 10px var(--highlight);
-  animation: neonGlow 1.5s infinite alternate;
-}
-
-/* Sidebar – vertical, with sharp angles and animations */
-.sidebar-1tnWF {
-  grid-area: sidebar;
-  background-color: #111;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-right: 2px solid var(--border-color);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  animation: slideInLeft 1s forwards;
-}
-
-/* Sidebar items – stark, with hover glow and scale effect */
-.sidebarItem-2lnvJ {
-  padding: 15px;
-  margin: 10px 0;
+  padding: 0 30px;
   background-color: transparent;
-  border: 2px solid transparent;
-  border-radius: 0;
-  font-size: 16px;
-  cursor: pointer;
-  color: var(--text-color);
-  transition: var(--trans);
-  text-align: center;
-  letter-spacing: 1px;
-}
-.sidebarItem-2lnvJ:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 15px var(--primary);
-  transform: scale(1.05);
-  background-color: #222;
+  border-bottom: 2px solid var(--border);
 }
 
-/* Main chat area & content */
-.main {
-  grid-area: main;
-  background: repeating-linear-gradient(
-    45deg,
-    #111,
-    #111 10px,
-    #222 10px,
-    #222 20px
-  );
+/* Chat area - replace with your class */
+.your-chat-area {
+  flex: 1;
+  background: linear-gradient(135deg, #111, #222);
   padding: 20px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  border-radius: 10px;
 }
 
-/* Chat bubbles – geometric, with animated entrance */
-.message-2qnXI {
-  max-width: 60%;
-  padding: 14px 24px;
-  margin: 12px 0;
+/* Chat message bubble - replace with your class */
+.your-message-bubble {
+  max-width: 70%;
+  padding: 14px 20px;
+  margin: 10px 0;
   background-color: #333;
-  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
-  border-radius: 10px;
-  font-size: 15px;
-  color: var(--text-color);
+  border-radius: 20px;
+  box-shadow: 0 0 10px var(--primary);
   opacity: 0;
-  animation: fadeInUp 0.8s forwards;
+  animation: fadeInUp 0.6s forwards;
 }
-.message-2qnXI.user {
+.your-message-bubble.user {
   background-color: #555;
   align-self: flex-end;
-  animation-delay: 0.2s;
+  box-shadow: 0 0 15px var(--accent);
 }
 
-/* Chat input – futuristic slider with glow */
-.chat-input-container {
-  display: flex;
+/* Input box - replace with your class */
+.your-input-container {
   padding: 15px 20px;
   background-color: #000;
-  border-top: 2px solid var(--border-color);
-  box-shadow: inset 0 0 20px var(--accent);
+  border-top: 2px solid var(--border);
+  display: flex;
 }
-.chat-input {
+.your-input {
   flex: 1;
   padding: 14px 20px;
   border-radius: 50px;
   border: none;
   background-color: #222;
+  color: var(--text);
   font-size: 15px;
-  color: #eee;
   outline: none;
   box-shadow: inset 0 0 10px var(--accent);
-  transition: var(--trans);
 }
-.chat-input::placeholder {
+.your-input::placeholder {
   color: #555;
 }
-.chat-input:hover {
-  box-shadow: inset 0 0 20px var(--highlight);
-}
 
-/* Info panel – on the right, with animated slide-in from top */
-.info {
+/* Info panel - replace with your class */
+.your-info-panel {
   grid-area: info;
   background-color: #111;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
   animation: slideDown 1s forwards;
 }
 
-/* User card – with subtle glow on hover */
-.user-card {
-  width: 80%;
+/* User card - replace with your class */
+.your-user-card {
   padding: 15px;
   background-color: #222;
   border-radius: 10px;
@@ -165,47 +132,39 @@
   cursor: pointer;
   transition: var(--trans);
 }
-.user-card:hover {
+.your-user-card:hover {
   box-shadow: 0 0 20px var(--accent);
   background-color: #111;
 }
 
-/* Bottom controls – animated with pulse glow */
-.bottom-controls {
-  grid-area: footer;
+/* Bottom controls - replace with your class */
+.your-bottom-controls {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #111;
-  border-top: 2px solid var(--border-color);
-  padding: 10px 20px;
+  background-color: #000;
+  border-top: 2px solid var(--border);
+  padding: 0 50px;
   animation: pulseGlow 2s infinite alternate;
 }
-.control-icon {
+
+.your-control-icon {
   font-size: 28px;
   color: #eee;
   cursor: pointer;
   transition: var(--trans);
 }
-.control-icon:hover {
+.your-control-icon:hover {
   color: var(--highlight);
   text-shadow: 0 0 10px var(--highlight);
 }
 
-/* Animations */
-@keyframes slideInLeft {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 10px var(--accent); }
-  100% { box-shadow: 0 0 20px var(--highlight); }
-}
+/* Animations (keep as is, or customize further) */
+@keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulseGlow { 0% { box-shadow: 0 0 10px var(--accent); } 100% { box-shadow: 0 0 20px var(--highlight); } }
